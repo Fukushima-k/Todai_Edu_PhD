@@ -1,0 +1,29 @@
+\documentclass[../main/main.tex]{subfiles}
+
+\renewcommand\thesection{\arabic{section}} % セクション番号だけを表示
+\usepackage{indentfirst} % 最初の段落にもインデントを付ける
+\setlength{\parindent}{1em} % 全角2文字分
+
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{center}
+        \Huge
+        論文の内容の要旨\\[1.5cm]
+        \Large
+        \begin{tabular}{c@{\hspace{1cm}}p{12.5cm}}
+            論文題目 & \@title\vspace{0.5cm}\\
+            & (\titleJP)\\[0.5cm]
+            氏\hspace{1cm}名 & \@author\\[1cm]
+        \end{tabular}
+    \end{center}
+}
+\makeatother
+
+\begin{document}
+
+\maketitle
+\vspace{2cm}
+
+\input{abst_text}
+
+\end{document}

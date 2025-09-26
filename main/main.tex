@@ -1,0 +1,106 @@
+\documentclass[12pt]{report}
+\usepackage[margin=25mm]{geometry}
+\usepackage{longtable}
+
+\usepackage[american]{babel}
+\usepackage{luatexja} % 日本語入力用
+
+
+\usepackage{csquotes}
+\usepackage[style=apa, backend=biber]{biblatex}
+\addbibresource{../aux_files/bibliography.bib}
+
+\usepackage{subfiles}
+
+\usepackage{newtxtext,newtxmath}
+\usepackage{endnotes}
+\let\footnote=\endnote
+
+\usepackage[doublespacing]{setspace}
+\usepackage{etoolbox}
+% \AtBeginEnvironment{longtable}{\singlespacing}  
+% \renewcommand\enotesize{\normalsize}
+
+
+\renewcommand{\arraystretch}{0.7}
+
+\usepackage{subcaption}
+\usepackage{caption}
+\captionsetup[figure]{labelfont={bf}, textfont=it, labelsep=newline, justification=raggedright, singlelinecheck=false}
+\captionsetup[table]{labelfont={bf}, textfont=it, labelsep=newline, justification=raggedright, singlelinecheck=false}
+
+
+\usepackage[mnwidth=3cm]{mnotes}
+\usepackage{makecell}
+
+\usepackage{color, hyperref} % apa7にdefaultで入っているパッケージ 
+\usepackage{cleveref}
+\crefname{chapter}{Chapter}{Chapters}
+\crefname{section}{Section}{Sections}
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+\crefname{equation}{Equation}{Equations}
+
+
+\sloppy % 横はばオーバー是正のため
+
+% line numbers
+\usepackage{lineno}
+\linenumbers
+
+
+% 要編集
+
+\title{In Preparation for a Dissertation That Has Yet to Begin}
+\newcommand{\titleJP}{いまだ始まらぬ博士論文のための準備}
+\date{}
+\author{福\kern0.5em島\kern1.5em健\kern0.5em太\kern0.5em郎}
+\newcommand{\authorEN}{Fukushima Kentaro}
+
+
+% タイトル頁の調整
+\makeatletter
+\renewcommand{\maketitle}{
+    \begin{center}
+        \huge
+        博士論文\\[1.5cm]
+        \@title\\
+        {\Large (\titleJP)}\\[10.5cm]
+        \@author\\[0.5cm]
+        (\authorEN)\\[2cm]
+    \end{center}
+    \thispagestyle{empty} 
+    \newpage
+}
+\makeatother
+
+% diff preamble providecommandは新奇しか追加しないコマンドなので、先に埋めておけばよい。
+\providecommand{\DIFdel}[1]{}                      %DIF PREAMBLE
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\clearpage
+\pagenumbering{arabic}
+
+\subfile{../Chap_templete/templete.tex}
+
+\subfile{../Chap_Examples/Examples.tex}
+
+% \subfile{../Chap_Intro/Introduction.tex}
+
+% \subfile{../Chap_Methodology/Methodology.tex}
+
+% \subfile{../Chap_realdata/realdata.tex}
+
+% \subfile{../Chap_GenDiscussion/GeneralDiscussion.tex}
+
+\printbibliography[title={References}]
+
+\end{document}

@@ -1,0 +1,14 @@
+*.log
+*.blg
+*.bcf
+*.bbl
+*.run.xml
+*.aux
+*.toc
+*.lot
+*.lof
+*.out
+*.pdf
+*.gz
+*(busy)
+*.ent

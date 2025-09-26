@@ -1,0 +1,23 @@
+\documentclass[../main/main.tex]{subfiles}
+
+\begin{document}
+
+
+\chapter{テンプレート} \label{chap:templete}
+\section{テンプレート} \label{sec:templete}
+
+これはテンプレートです。このように\verb|\subfiles|で章ごとに分けて書くことができます。
+
+\verb|\include{}| でもよいですが、\verb|\subfiles|の方が以下の点で優れています。
+\begin{itemize}
+    \item 各章ごとに独立してコンパイルできる
+    \item その時に、プリアンブルは\verb|main.tex|のものを勝手に参照してくれる
+    \item \verb|main.tex|に含める場合には、\verb|\include{}|同様に、\verb|\subfile{}|を使用できる
+    \item このとき、document環境の中身のみを参照してくれる
+\end{itemize}
+
+特にoverleafで無料のアカウントを使っている場合にはランタイムの制限があるので、\verb|\subfiles|の方が便利です。
+なお、main.texの場合には結局時間オーバーになるので、有料版overleafかローカル環境でのコンパイルをおすすめします。
+
+\end{document}
+

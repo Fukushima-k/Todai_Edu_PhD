@@ -1,0 +1,45 @@
+% \documentclass[a4paper,11pt]{report}
+\documentclass[../main/main.tex]{subfiles}
+
+% \usepackage[margin=1mm]{geometry}
+% \usepackage{titling}
+\usepackage{luatexja}
+\usepackage{lltjext}
+% \usepackage{makecell}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{geometry}
+% \usepackage{graphicx}
+\usepackage{booktabs}
+
+\pagestyle{empty}
+
+\makeatletter
+\newcommand{\theauthor}{\@author} % 著者名を取得するコマンド
+\newcommand{\thetitle}{\@title} % タイトルを取得するコマンド
+\makeatother
+
+\begin{document}
+\newgeometry{margin = 5mm} % 余白を再設定
+\renewcommand{\arraystretch}{0.5} % 博論の枚数に合わせて、頑張って調整してね。
+\newcommand{\titlesize}{\scriptsize}
+\newcommand{\authorsize}{\normalsize} 
+
+\newcommand{\afafafa}{
+    
+\\\\
+\midrule
+\titlesize\thetitle   & \hspace{13cm}\multirow{2}{*}{\centering \authorsize \theauthor}\\
+\titlesize（\titleJP）& \\
+\midrule\\}
+
+\begin{tabular}<t>{cr}
+    \afafafa
+    \afafafa
+    \afafafa
+    \afafafa
+    \afafafa
+\end{tabular}
+
+
+\end{document}
