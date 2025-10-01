@@ -1,4 +1,5 @@
 \documentclass[../main/main.tex]{subfiles}
+\externaldocument{\subfix{../main/main}} % ← 他章ラベルを main.aux から読む
 
 \begin{document}
 
@@ -113,51 +114,23 @@ cleverefパッケージを使用することで、参照が自動的に適切な
 \cref{eq:eq1,eq:eq2}から、$x = 6$、$y = 4$が得られます。
 
 \section{引用の仕方}
-
 \subsection{基本的な引用}
-
-\textcite{arai2020japanese}は、思考力を測る多枝選択式問題について研究を行いました。
 
 \textcite{Black1998-yt}によると、形成的評価は学習に重要な役割を果たします。
 
-\parencite{arai2020japanese}は、思考力を測る多枝選択式問題について研究を行いました。
-\textcite{arai2020japanese}は、思考力を測る多枝選択式問題について研究を行いました。
+思考力を測る多枝選択式問題について研究を行いました \parencite{arai2020japanese}。
 
 \subsection{複数の引用}
 
 複数の研究を同時に引用する場合：
 
-\textcite{arai2020japanese}と\textcite{Black1998-yt}は、評価に関する重要な研究を行いました。
+\parencite{Black1998-yt,arai2020japanese}の研究結果は、形成的評価の有効性を示しています。
 
 \subsection{括弧内引用}
 
 \parencite{arai2020japanese}の研究では、思考力測定の重要性が指摘されています。
 
-\parencite{Black1998-yt,arai2020japanese}の研究結果は、形成的評価の有効性を示しています。
 
-\subsection{ページ指定付き引用}
-
-\parencite[p.~15]{arai2020japanese}で述べられているように、思考力測定には注意深い設計が必要です。
-
-\subsection{著者名を含む引用}
-
-\textcite{arai2020japanese}は、\parencite[p.~20]{arai2020japanese}で詳細に説明しています。
-
-\subsection{テキスト内引用}
-
-\cite{arai2020japanese}の研究は、思考力測定の新しいアプローチを提案しています。
-
-\cite{Black1998-yt,arai2020japanese}の研究結果は、形成的評価の有効性を示しています。
-
-\subsection{脚注付き引用}
-
-\footcite{arai2020japanese}の研究では、思考力測定の重要性が指摘されています。
-
-\subsection{括弧内著者名引用}
-
-\parencite{arai2020japanese}は、思考力測定の新しいアプローチを提案しています。
-
-\section{章をまたいだ参照}
 
 \subsection{他の章への参照}
 
@@ -178,19 +151,5 @@ cleverefパッケージを使用することで、参照が自動的に適切な
 \subsection{式と図表の組み合わせ}
 
 \cref{eq:sample_equation}で示された関係式は、\cref{fig:sample_plot}のグラフで視覚的に確認できます。
-
-\section{まとめ}
-
-この章では、以下の参照方法について説明しました：
-
-\begin{enumerate}
-    \item cleverefパッケージによる自動参照
-    \item 図表の挿入とキャプション
-    \item 数式の参照
-    \item 文献の引用方法
-    \item 章をまたいだ参照
-\end{enumerate}
-
-これらの方法を適切に使用することで、読みやすく、参照しやすい論文を作成できます。
 
 \end{document}

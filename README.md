@@ -8,21 +8,20 @@
 2025_PhD_templete/
 ├── main/                    # メインのLaTeXファイル
 │   └── main.tex            # メインの文書ファイル
-├── Chap_templete/          # テンプレート章
-│   └── templete.tex       # 基本的な章のテンプレート
-├── Chap_Examples/          # 利用例章（新規追加）
+├── Chapters/               # 章ファイル
+│   ├── templete.tex       # 基本的な章のテンプレート
 │   └── Examples.tex       # 参照方法の例示
 ├── Abst/                   # 要約関連ファイル
 │   ├── abst.tex           # 要約ファイル
 │   ├── abst_yoyaku.tex    # 予約要約ファイル
-│   └── abst_text.tex      # 要約テキスト
+│   ├── abst_text.tex      # 要約テキスト
+│   └── back.tex           # 裏表紙ファイル
 ├── aux_files/              # 補助ファイル
 │   └── bibliography.bib   # 参考文献データベース
 └── images/                 # 図表ファイル
     ├── Chap_A/            # 章A用の図表
     │   └── demo_plot.png  # サンプルプロット
     └── Chap_B/            # 章B用の図表
-        └── table_postSD_all_informative.tex
 ```
 
 ## 主要な機能
@@ -47,48 +46,44 @@
 - APA形式の引用スタイル
 - 日本語・英語混在対応
 
-## 利用例章（Chap_Examples）
+## 利用例
 
-新しく追加された利用例章では、以下の内容を例示しています：
+`Chapters/Examples.tex`では、以下の機能の使用例を提供しています：
 
-### 参照方法
-- `\cref{}`による自動参照
-- 複数項目の同時参照
-- 章をまたいだ参照
-
-### 図表の挿入
-- 基本的な図の挿入
-- 表の作成と参照
-- サブキャプション付き図
-- 複数図の組み合わせ
-
-### 引用方法
-- `\citet{}`による著者名付き引用
-- `\citep{}`による括弧内引用
-- 複数文献の同時引用
-- ページ指定付き引用
-
-### 数式の参照
-- 基本的な数式の参照
-- 連立方程式の参照
-- 式と図表の組み合わせ参照
+- **参照方法**: `\cref{}`による自動参照、複数項目の同時参照
+- **図表の挿入**: 基本的な図の挿入、表の作成と参照、サブキャプション付き図
+- **引用方法**: `\textcite{}`、`\parencite{}`による引用、複数文献の同時引用
+- **数式の参照**: 基本的な数式の参照、連立方程式の参照
 
 ## 使用方法
 
-1. メインファイルのコンパイル：
-   ```bash
-   cd main
-   lualatex main.tex
-   biber main
-   lualatex main.tex
-   lualatex main.tex
-   ```
+### 完全な論文のコンパイル
+```bash
+cd main
+lualatex main.tex
+biber main
+lualatex main.tex
+lualatex main.tex
+```
 
-2. 個別の章のコンパイル：
-   ```bash
-   cd Chap_Examples
-   lualatex Examples.tex
-   ```
+### 個別の章のコンパイル（開発時）
+```bash
+cd Chapters
+lualatex Examples.tex
+```
+
+章ごとに個別コンパイルを行う場合、そのままでは他の章への参照（相互参照）ができません。これを解決するために、`xr-hyper`パッケージを使い、`main.aux`ファイルを各章で読み込む方法を採用しています。
+
+**注意点：**
+- パッケージの読み込み順は `hyperref` → `xr-hyper` → `cleveref` の順にしてください。
+- `main.aux` が存在しないと相互参照は機能しません。必ず一度は `main.tex` をビルドして `main.aux` を生成してください（または参照したい章の `.aux` を直接指定しても構いません）。
+
+### 要約のみのコンパイル
+```bash
+cd Abst
+lualatex abst.tex
+lualatex abst_yoyaku.tex
+```
 
 ## 注意事項
 
@@ -96,13 +91,13 @@
 - 図表ファイルは`images/`フォルダ内に配置
 - 参考文献は`aux_files/bibliography.bib`に追加
 - 新しい章を追加する場合は`main.tex`に`\subfile{}`を追加
+- 各章ファイルは`\documentclass[../main/main.tex]{subfiles}`で開始する必要があります
 
 ## カスタマイズ
 
 ### 新しい章の追加
-1. 新しいフォルダ（例：`Chap_NewChapter/`）を作成
-2. 章ファイル（例：`NewChapter.tex`）を作成
-3. `main.tex`に`\subfile{../Chap_NewChapter/NewChapter.tex}`を追加
+1. `Chapters/`フォルダ内に新しい章ファイル（例：`NewChapter.tex`）を作成
+2. `main.tex`に`\subfile{../Chapters/NewChapter.tex}`を追加
 
 ### スタイルの変更
 - `main.tex`のプリアンブル部分でパッケージの設定を変更

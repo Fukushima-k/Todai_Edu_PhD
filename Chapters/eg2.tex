@@ -1,0 +1,17 @@
+\documentclass[../main/main.tex]{subfiles}
+\externaldocument{\subfix{../main/main}} % ← 他章ラベルを main.aux から読む
+
+\begin{document}
+
+\chapter{別ファイルの相互参照の例} 
+\section{別ファイルの相互参照の例} 
+
+個別のファイルでコンパイルするときには、
+\verb|\externaldocument{\subfix{../main}}|をプリアンブルに入れておくと、
+main.auxから他の章のラベルを参照できます。
+このためには、一度main.texをコンパイルしておく必要があります。
+
+\cref{chap:templete} は、\verb|Chapters/templete.tex|の章です。
+    
+\end{document}
+
